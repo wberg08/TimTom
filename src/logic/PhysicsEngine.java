@@ -125,83 +125,45 @@ public class PhysicsEngine {
   }
 
   private static boolean intersects(Circle c, Triangle t) {
-    /*
-     * Iterates over each line of the triangle and tests intersection according
-     * to
-     * 
-     * http://stackoverflow.com/questions/1073336/circle-line-collision-detection?rq=1
-     */
+    return intersects(c, t.getFirst(), t.getSecond()) ||
+        intersects(c, t.getSecond(), t.getThird()) ||
+        intersects(c, t.getThird(), t.getFirst());
+  }
+  
+  /**
+   * @param c Circle
+   * @param l0 One end of line
+   * @param l1 Other end of line
+   */
+  private static boolean intersects(Circle c, Point l0, Point l1) {
+    int xh = c.xLoc - l0.xLoc;
+    int yh = c.yLoc - l0.yLoc;
     
-    Point movedFirst = new Point(t.getFirst().x, t.getFirst().y);
-    Point movedSecond = new Point(t.getSecond().x, t.getSecond().y);
-    Point movedThird = new Point(t.getThird().x, t.getThird().y);
-
-    Point[] tPoints = { movedFirst, movedSecond, movedSecond,
-        movedThird, movedThird, movedFirst };
-
-    for (int i = 0; i < tPoints.length; i += 2)
-    {
-      /*
-       * For each line, we must solve the quadratic. We therefore require a, b
-       * and c, which require d and f.
-       * 
-       * a = ||d||^2
-       * b = 2*f.d [the tricky one]
-       * c = ||f||^2 - r^2
-       */
-
-      // Line defined by E (start vector) -> L (end vector)
-      // direction vector d
-      // C and r are properties of the circle
-      // f = E - C
-      double dX, dY, magD, gradD, fX, fY, magF, gradF;
-
-      // clean transition into double is performed here
-      dX = tPoints[i + 1].x - tPoints[i].x;
-      dY = tPoints[i + 1].y - tPoints[i].y;
-      magD = Math.sqrt(dX * dX + dY * dY);
-      gradD = dY / dX;
-      // and here
-      fX = c.xLoc - tPoints[i].x;
-      fY = c.yLoc - tPoints[i].y;
-      magF = Math.sqrt(fX * fX + fY * fY);
-      gradF = fY / fX;
-
-      double aCalc, bCalc, cCalc;
-
-      aCalc = magD * magD;
-      bCalc = 2 * magF * magD * Math.atan(gradD - gradF / (1 + gradD * gradF));
-      cCalc = magF * magF - c.getRadius() * c.getRadius();
-
-      double discriminant = bCalc * bCalc - 4 * aCalc * cCalc;
-
-      if (discriminant < 0)
-        continue;
-      else
-      {
-        discriminant = Math.sqrt(discriminant);
-
-        double t1 = (-bCalc + discriminant) / (2 * aCalc);
-        double t2 = (-bCalc - discriminant) / (2 * aCalc);
-
-        if (t1 >= 0 && t1 <= 1)
-        {
-          return true;
-        } else if (t2 >= 0 && t2 <= 1)
-        {
-          return true;
-        }
-
-        /*
-         * This comment should never be reached. If the discriminant is
-         * negative, there are no solutions and the line never intersects;
-         * otherwise, one or both of t1 and t2 should contain the solution(s).
-         */
-      }
-    }
-
-    // no intersections were found
-    return false;
+    int xl = l1.xLoc - l0.xLoc;
+    int yl = l1.yLoc - l0.yLoc;
+    
+    double arcCosNum = (double) (xl * xh + yl * yh);
+    double arcCosDen = Math.sqrt(xl * xl + yl * yl) * Math.sqrt(xh * xh + yh * yh);
+    
+    double theta = Math.acos(arcCosNum / arcCosDen);
+    
+    double h = (double) (Math.sqrt(xh * xh + yh * yh));
+    
+    // why am I using a trig function twice? this method could be improved
+    double d = h * Math.sin(theta);
+    
+    System.out.println("xh: " + xh);
+    System.out.println("yh: " + yh);
+    System.out.println("x1: " + xl);
+    System.out.println("y1: " + yl);
+    System.out.println("arcCosNum: " + arcCosNum);
+    System.out.println("arcCosDen: " + arcCosDen);
+    System.out.println("theta: " + theta);
+    System.out.println("h: " + h);
+    System.out.println("d: " + d);
+    System.out.println("r: " + c.getRadius());
+    
+    return d < c.getRadius();
   }
 
   private static boolean intersects(Circle c, Polygon ps) {

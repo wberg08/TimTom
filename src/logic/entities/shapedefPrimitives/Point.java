@@ -1,10 +1,10 @@
 package logic.entities.shapedefPrimitives;
 
 public class Point {
-  public int x, y;
+  public int xLoc, yLoc;
 
   public Point(int x, int y) {
-    this.x = x;
-    this.y = y;
+    this.xLoc = x;
+    this.yLoc = y;
   }
 }
