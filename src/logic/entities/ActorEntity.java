@@ -3,7 +3,7 @@ package logic.entities;
 import java.awt.Graphics;
 import java.util.Set;
 
-import logic.entities.shapePrimitives.Shape;
+import logic.entities.shapedefPrimitives.Shapedef;
 import run.GameFrame;
 
 /*
@@ -19,7 +19,7 @@ import run.GameFrame;
 public abstract class ActorEntity {
   public boolean       didCollide = false;
   protected int        xLoc, yLoc;
-  protected Set<Shape> hitbox;
+  protected Set<Shapedef> hitbox;
 
   /*
    * Steps the entity by one frame.
@@ -28,11 +28,11 @@ public abstract class ActorEntity {
 
   public abstract void paint(Graphics g);
 
-  public Set<Shape> getHitBox() {
+  public Set<Shapedef> getHitBox() {
     return hitbox;
   }
 
-  public void setHitbox(Set<Shape> hitPolygon) {
+  public void setHitbox(Set<Shapedef> hitPolygon) {
     hitbox = hitPolygon;
   }
 

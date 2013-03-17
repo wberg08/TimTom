@@ -5,9 +5,9 @@ import java.awt.Graphics;
 import java.util.HashSet;
 
 import logic.entities.NonPhysicsActor;
-import logic.entities.shapePrimitives.Point;
-import logic.entities.shapePrimitives.Polygon;
-import logic.entities.shapePrimitives.Shape;
+import logic.entities.shapedefPrimitives.Point;
+import logic.entities.shapedefPrimitives.Polygon;
+import logic.entities.shapedefPrimitives.Shapedef;
 import run.GameFrame;
 
 public class UTFlatTile extends NonPhysicsActor {
@@ -22,7 +22,7 @@ public class UTFlatTile extends NonPhysicsActor {
     this.xLoc = xLoc;
     this.yLoc = yLoc;
     
-    HashSet<Shape> hitbox = new HashSet<Shape>();
+    HashSet<Shapedef> hitbox = new HashSet<Shapedef>();
     Polygon polygon = new Polygon(
         new Point(xLoc, yLoc),
         new Point(xLoc + WIDTH, yLoc),

@@ -1,4 +1,4 @@
-package logic.entities.shapePrimitives;
+package logic.entities.shapedefPrimitives;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -6,7 +6,7 @@ import java.util.Set;
 /*
  * A polygon composed of triangles.
  */
-public class Polygon extends Shape {
+public class Polygon extends Shapedef {
   private Set<Triangle> triangles = new HashSet<Triangle>();
 
   /*

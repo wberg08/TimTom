@@ -5,8 +5,8 @@ import java.awt.Graphics;
 import java.util.HashSet;
 
 import logic.entities.NonPhysicsActor;
-import logic.entities.shapePrimitives.Polygon;
-import logic.entities.shapePrimitives.Shape;
+import logic.entities.shapedefPrimitives.Polygon;
+import logic.entities.shapedefPrimitives.Shapedef;
 import run.GameFrame;
 
 public class GroundBlock extends NonPhysicsActor {
@@ -23,7 +23,7 @@ public class GroundBlock extends NonPhysicsActor {
 
     Polygon hitBox = new Polygon(xLoc, yLoc, xLoc + xDim, yLoc, xLoc + xDim,
         yLoc + yDim, xLoc, yLoc + yDim);
-    HashSet<Shape> a = new HashSet<Shape>();
+    HashSet<Shapedef> a = new HashSet<Shapedef>();
     a.add(hitBox);
 
     setHitbox(a);

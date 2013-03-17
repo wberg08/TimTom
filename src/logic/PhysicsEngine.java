@@ -6,11 +6,11 @@ import java.util.Set;
 import logic.entities.ActorEntity;
 import logic.entities.NonPhysicsActor;
 import logic.entities.PhysicsActor;
-import logic.entities.shapePrimitives.Circle;
-import logic.entities.shapePrimitives.Point;
-import logic.entities.shapePrimitives.Polygon;
-import logic.entities.shapePrimitives.Shape;
-import logic.entities.shapePrimitives.Triangle;
+import logic.entities.shapedefPrimitives.Circle;
+import logic.entities.shapedefPrimitives.Point;
+import logic.entities.shapedefPrimitives.Polygon;
+import logic.entities.shapedefPrimitives.Shapedef;
+import logic.entities.shapedefPrimitives.Triangle;
 
 public class PhysicsEngine {
   private static final double g = 0.25; // px/frame^2
@@ -49,8 +49,8 @@ public class PhysicsEngine {
           continue;
 
 
-        for (Shape sae : ae1.getHitBox())
-          for (Shape spotential : ae2.getHitBox())
+        for (Shapedef sae : ae1.getHitBox())
+          for (Shapedef spotential : ae2.getHitBox())
             if (intersects(sae, spotential)) {
               applyIntersectionPhysics(ae1, ae2);
               ae1.didCollide = true;
@@ -71,16 +71,16 @@ public class PhysicsEngine {
     }
   }
   
-  public static boolean intersects(Set<Shape> a, Set<Shape> b) {
-    for(Shape sa : a)
-      for(Shape sb : b)
+  public static boolean intersects(Set<Shapedef> a, Set<Shapedef> b) {
+    for(Shapedef sa : a)
+      for(Shapedef sb : b)
         if(intersects(sa, sb))
           return true;
     
     return false;
   }
 
-  private static boolean intersects(Shape a, Shape b) {
+  private static boolean intersects(Shapedef a, Shapedef b) {
     if (a instanceof Circle)
     {
       Circle castedA = (Circle) a;
@@ -293,7 +293,7 @@ public class PhysicsEngine {
     e.setXLoc(e.getXLoc() + xChng);
     e.setYLoc(e.getYLoc() + yChng);
 
-    for (Shape s : e.getHitBox())
+    for (Shapedef s : e.getHitBox())
     {
       s.xLoc += xChng;
       s.yLoc += yChng;

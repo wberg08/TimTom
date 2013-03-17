@@ -1,6 +1,6 @@
-package logic.entities.shapePrimitives;
+package logic.entities.shapedefPrimitives;
 
-public class Circle extends Shape {
+public class Circle extends Shapedef {
   private int radius;
 
   public Circle(int x, int y, int r) {

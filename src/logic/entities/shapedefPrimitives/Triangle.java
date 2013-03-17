@@ -1,6 +1,6 @@
-package logic.entities.shapePrimitives;
+package logic.entities.shapedefPrimitives;
 
-public class Triangle extends Shape {
+public class Triangle extends Shapedef {
   private Point a, b, c;
 
   @SuppressWarnings("unused")

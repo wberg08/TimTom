@@ -1,4 +1,4 @@
-package logic.entities.shapePrimitives;
+package logic.entities.shapedefPrimitives;
 
 public class Point {
   public int x, y;

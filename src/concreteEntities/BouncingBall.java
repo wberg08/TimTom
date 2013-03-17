@@ -5,8 +5,8 @@ import java.awt.Graphics;
 import java.util.HashSet;
 
 import logic.entities.PhysicsActor;
-import logic.entities.shapePrimitives.Circle;
-import logic.entities.shapePrimitives.Shape;
+import logic.entities.shapedefPrimitives.Circle;
+import logic.entities.shapedefPrimitives.Shapedef;
 import run.GameFrame;
 
 public class BouncingBall extends PhysicsActor {
@@ -22,7 +22,7 @@ public class BouncingBall extends PhysicsActor {
     this.rad = rad;
 
     Circle hitBox = new Circle(xLoc + rad, yLoc + rad, rad);
-    HashSet<Shape> a = new HashSet<Shape>();
+    HashSet<Shapedef> a = new HashSet<Shapedef>();
     a.add(hitBox);
 
     setHitbox(a);
