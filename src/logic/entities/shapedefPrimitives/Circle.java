@@ -16,4 +16,9 @@ public class Circle extends Shapedef {
   public void setRadius(int radius) {
     this.radius = radius;
   }
+  
+  @Override
+  public String toString() {
+    return "(" + xLoc + ", " + yLoc + ", " + getRadius() + ")";
+  }
 }

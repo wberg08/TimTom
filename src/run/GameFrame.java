@@ -10,7 +10,7 @@ import logic.entities.NonPhysicsActor;
 import logic.entities.PhysicsActor;
 
 public class GameFrame {
-  private HashSet<BackgroundEntity> bges            = new HashSet<BackgroundEntity>();
+  private HashSet<BackgroundEntity> bges          = new HashSet<BackgroundEntity>();
   private HashSet<PhysicsActor>     physicsaes    = new HashSet<PhysicsActor>();
   private HashSet<NonPhysicsActor>  nonPhysicsaes = new HashSet<NonPhysicsActor>();
 

@@ -21,8 +21,8 @@ public class GroundBlock extends NonPhysicsActor {
     this.xDim = xDim;
     this.yDim = yDim;
 
-    Polygon hitBox = new Polygon(xLoc, yLoc, xLoc + xDim, yLoc, xLoc + xDim,
-        yLoc + yDim, xLoc, yLoc + yDim);
+    Polygon hitBox = new Polygon(xLoc, yLoc, xLoc + xDim, yLoc, xLoc + xDim, yLoc + yDim,
+                                 xLoc + xDim, yLoc + yDim, xLoc, yLoc + yDim, xLoc, yLoc);
     HashSet<Shapedef> a = new HashSet<Shapedef>();
     a.add(hitBox);
 
@@ -52,8 +52,18 @@ public class GroundBlock extends NonPhysicsActor {
       on = !on;
     }
     
-    g.setColor(Color.GREEN);
-    g.fillRect(xLoc, yLoc, xDim, yDim);
+////    DEBUG
+//    g.setColor(Color.GREEN);
+//   
+//    for(Shapedef s : getHitBox())
+//    {
+//      Polygon p = (Polygon) s;
+//      for(Triangle t : p.getTriangles()) {
+//        g.drawLine(t.getFirst().xLoc, t.getFirst().yLoc, t.getSecond().xLoc, t.getSecond().yLoc);
+//        g.drawLine(t.getSecond().xLoc, t.getSecond().yLoc, t.getThird().xLoc, t.getThird().yLoc);
+//        g.drawLine(t.getThird().xLoc, t.getThird().yLoc, t.getFirst().xLoc, t.getFirst().yLoc);
+//      }
+//    }
   }
 
 }

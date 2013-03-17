@@ -38,10 +38,9 @@ public class Triangle extends Shapedef {
   
   @Override
   public String toString() {
-    return "Triangle: " +
-        "(" + a.xLoc + ", " + a.yLoc + "), " +
-        "(" + b.xLoc + ", " + b.yLoc + "), " +
-        "(" + c.xLoc + ", " + c.yLoc + "), ";
+    return "(" + a.xLoc + ", " + a.yLoc + ")-" +
+           "(" + b.xLoc + ", " + b.yLoc + ")-" +
+           "(" + c.xLoc + ", " + c.yLoc + ")";
   }
 
 }

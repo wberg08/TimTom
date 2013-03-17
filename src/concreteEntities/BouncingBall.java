@@ -36,17 +36,16 @@ public class BouncingBall extends PhysicsActor {
     g.setColor(color);
     g.fillOval(xLoc, yLoc, rad * 2, rad * 2);
 
-     // DEBUG
+//     // DEBUG
 //     g.setColor(Color.GREEN);
 //    
-//     for(Shape s : getHitBox())
-//     {
-//     Circle c = (Circle) s;
-//     g.fillOval(
-//     (int) (c.xLoc - c.getRadius()),
-//     (int) (c.yLoc - c.getRadius()),
-//     (int) (c.getRadius() * 2),
-//     (int) (c.getRadius() * 2));
+//     for(Shapedef s : getHitBox()) {
+//       Circle c = (Circle) s;
+//       g.fillOval(
+//       (int) (c.xLoc - c.getRadius()),
+//       (int) (c.yLoc - c.getRadius()),
+//       (int) (c.getRadius() * 2),
+//       (int) (c.getRadius() * 2));
 //     }
   }
 }

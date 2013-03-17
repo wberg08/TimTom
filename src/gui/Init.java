@@ -2,7 +2,6 @@ package gui;
 
 import gui.impl.DefaultGuiThemeImpl;
 
-import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -11,7 +10,6 @@ import run.GameFrame;
 import system.InputProvider;
 import concreteEntities.BouncingBall;
 import concreteEntities.PlayerCursor;
-import concreteEntities.UTFlatTile;
 import concreteEntities.ESPrimus.GroundBlock;
 import concreteEntities.ESPrimus.SineBoxes;
 
@@ -51,7 +49,6 @@ public class Init {
   public static GameFrame makeNewGameFrame() {
     GameFrame ret = new GameFrame();
 
-    ret.addEntity(new UTFlatTile(500, 125, new Color(133, 133, 133)));
 //    ret.addEntity(new UTFlatTile(450, 150, new Color(33, 33, 33)));
 //    ret.addEntity(new UTFlatTile(400, 100, new Color(233, 233, 233)));
 

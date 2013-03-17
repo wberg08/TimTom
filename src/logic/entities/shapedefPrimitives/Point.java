@@ -7,4 +7,9 @@ public class Point {
     this.xLoc = x;
     this.yLoc = y;
   }
+  
+  @Override
+  public String toString() {
+    return "(" + xLoc + ", " + yLoc + ")";
+  }
 }

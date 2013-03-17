@@ -19,13 +19,13 @@ public class PhysicsEngine {
    * Effects one frame of physics. Note that NonPhysicsActors must be included
    * since collisions with them by PhysicsActors must be calculated.
    * 
-   * Warning: the complexity of this method is ridiculous.
+   * Warning: the complexity of this method is ridiculous. On an unrelated
+   * note, let's multithread it someday.
    */
-  public static void step(
-    Set<PhysicsActor> aes,
-    Set<NonPhysicsActor> naes
-  ) {
-    HashSet<ActorEntity> allActors = new HashSet<ActorEntity>(aes);
+  public static void step(Set<PhysicsActor> aes,
+                          Set<NonPhysicsActor> naes) {
+    HashSet<ActorEntity> allActors = new HashSet<ActorEntity>();
+    allActors.addAll(aes);
     allActors.addAll(naes);
 
     /*
@@ -36,10 +36,6 @@ public class PhysicsEngine {
       ae1.didCollide = false;
       if (ae1.getHitBox() == null)
         continue;
-
-//      if(ae1 instanceof BouncingBall) {
-//        System.out.println("Eclipse is TOTAL SHIT");
-//      }
 
       // in the case of multiple intersections with X, intersects with the
       // first intersector found (that is not X itself) using this loop (order
@@ -131,9 +127,11 @@ public class PhysicsEngine {
   }
   
   /**
+   * Intersection between a circle and a line.
+   * 
    * @param c Circle
-   * @param l0 One end of line
-   * @param l1 Other end of line
+   * @param l0 One endpoint of line
+   * @param l1 Other endpoint of line
    */
   private static boolean intersects(Circle c, Point l0, Point l1) {
     int xh = c.xLoc - l0.xLoc;
@@ -151,17 +149,6 @@ public class PhysicsEngine {
     
     // why am I using a trig function twice? this method could be improved
     double d = h * Math.sin(theta);
-    
-    System.out.println("xh: " + xh);
-    System.out.println("yh: " + yh);
-    System.out.println("x1: " + xl);
-    System.out.println("y1: " + yl);
-    System.out.println("arcCosNum: " + arcCosNum);
-    System.out.println("arcCosDen: " + arcCosDen);
-    System.out.println("theta: " + theta);
-    System.out.println("h: " + h);
-    System.out.println("d: " + d);
-    System.out.println("r: " + c.getRadius());
     
     return d < c.getRadius();
   }
