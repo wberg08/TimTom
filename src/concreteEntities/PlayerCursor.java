@@ -7,12 +7,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 import logic.GameFrame;
-import logic.entities.NonPhysicsActor;
+import logic.entities.PhysicsActor;
 import logic.entities.shapedefPrimitives.Circle;
 import logic.entities.shapedefPrimitives.Shapedef;
 import system.InputProvider;
 
-public class PlayerCursor extends NonPhysicsActor {
+public class PlayerCursor extends PhysicsActor {
   
   public PlayerCursor(int xLoc, int yLoc) {
     super();
