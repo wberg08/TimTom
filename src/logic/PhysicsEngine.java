@@ -276,4 +276,16 @@ public class PhysicsEngine {
       s.yLoc += yChng;
     }
   }
+
+  /**
+   * If the two arguments are intersecting, 'push' them just enough away from
+   * each other to not intersect.
+   * 
+   * @param ae1
+   * @param ae2 entities to be deintersected
+   */
+  private static void deintersect(ActorEntity ae1, ActorEntity ae2) {
+    
+  }
+  
 }

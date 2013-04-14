@@ -26,20 +26,20 @@ public class PlayerCursor extends PhysicsActor {
 
   public void step(GameFrame currentFrame) {
     if(InputProvider.isUpPressed) {
-      yLoc -= 3;
-      moveHitboxy(-3);
+      yLoc -= 1;
+      moveHitboxy(-1);
     }
     if(InputProvider.isDownPressed) {
-      yLoc += 3;
-      moveHitboxy(3);
+      yLoc += 1;
+      moveHitboxy(1);
     }
     if(InputProvider.isLeftPressed) {
-      xLoc -= 3;
-      moveHitboxx(-3);
+      xSpd -= 1;
+      moveHitboxx(-1);
     }
     if(InputProvider.isRightPressed) {
-      xLoc += 3;
-      moveHitboxx(3);
+      xSpd += 1;
+      moveHitboxx(1);
     }
   }
 

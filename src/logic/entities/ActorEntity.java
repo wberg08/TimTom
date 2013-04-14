@@ -17,8 +17,9 @@ import logic.entities.shapedefPrimitives.Shapedef;
  * useful limitation restrictive.
  */
 public abstract class ActorEntity {
-  public boolean       didCollide = false;
-  protected int        xLoc, yLoc;
+
+  public boolean didCollide = false;
+  protected int xLoc, yLoc;
   protected Set<Shapedef> hitbox;
 
   /*
@@ -51,4 +52,5 @@ public abstract class ActorEntity {
   public void setYLoc(int yLoc) {
     this.yLoc = yLoc;
   }
+
 }
