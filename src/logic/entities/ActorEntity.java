@@ -3,8 +3,8 @@ package logic.entities;
 import java.awt.Graphics;
 import java.util.Set;
 
+import logic.GameFrame;
 import logic.entities.shapedefPrimitives.Shapedef;
-import run.GameFrame;
 
 /*
  * An ActorEntity is an Entity that is in the foreground (part of the 'play

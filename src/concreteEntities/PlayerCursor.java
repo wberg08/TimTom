@@ -6,10 +6,10 @@ import java.awt.Graphics;
 import java.util.HashSet;
 import java.util.Set;
 
+import logic.GameFrame;
 import logic.entities.NonPhysicsActor;
 import logic.entities.shapedefPrimitives.Circle;
 import logic.entities.shapedefPrimitives.Shapedef;
-import run.GameFrame;
 import system.InputProvider;
 
 public class PlayerCursor extends NonPhysicsActor {

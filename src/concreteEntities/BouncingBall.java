@@ -4,10 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.HashSet;
 
+import logic.GameFrame;
 import logic.entities.PhysicsActor;
 import logic.entities.shapedefPrimitives.Circle;
 import logic.entities.shapedefPrimitives.Shapedef;
-import run.GameFrame;
 
 public class BouncingBall extends PhysicsActor {
   private int   rad   = 100;

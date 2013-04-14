@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
+import logic.GameFrame;
 import logic.entities.NonPhysicsActor;
-import run.GameFrame;
 
 public class FlashingBall extends NonPhysicsActor {
   private int    xDim           = 200, yDim = 200;

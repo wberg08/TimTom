@@ -2,7 +2,8 @@ package logic.entities;
 
 import java.awt.Graphics;
 
-import run.GameFrame;
+import logic.GameFrame;
+
 
 /*
  * An ActorEntity that is subject to the physics engine.

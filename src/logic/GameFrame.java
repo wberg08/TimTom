@@ -1,18 +1,18 @@
-package run;
+package logic;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import logic.PhysicsEngine;
 import logic.entities.ActorEntity;
 import logic.entities.BackgroundEntity;
 import logic.entities.NonPhysicsActor;
 import logic.entities.PhysicsActor;
 
 public class GameFrame {
-  private HashSet<BackgroundEntity> bges          = new HashSet<BackgroundEntity>();
-  private HashSet<PhysicsActor>     physicsaes    = new HashSet<PhysicsActor>();
-  private HashSet<NonPhysicsActor>  nonPhysicsaes = new HashSet<NonPhysicsActor>();
+
+  private HashSet<BackgroundEntity> bges = new HashSet<BackgroundEntity>();
+  private HashSet<PhysicsActor> physicsaes = new HashSet<PhysicsActor>();
+  private HashSet<NonPhysicsActor> nonPhysicsaes = new HashSet<NonPhysicsActor>();
 
   public void step() {
     PhysicsEngine.step(physicsaes, nonPhysicsaes);
@@ -50,4 +50,5 @@ public class GameFrame {
     ret.addAll(nonPhysicsaes);
     return ret;
   }
+
 }

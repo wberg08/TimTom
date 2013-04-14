@@ -3,7 +3,7 @@ package concreteEntities.ESPrimus;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import run.GameFrame;
+import logic.GameFrame;
 import logic.entities.BackgroundEntity;
 
 public class SineBoxes extends BackgroundEntity {

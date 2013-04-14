@@ -4,8 +4,8 @@ package concreteEntities;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import logic.GameFrame;
 import logic.entities.NonPhysicsActor;
-import run.GameFrame;
 import system.InputProvider;
 
 public class PlayerJumper extends NonPhysicsActor {

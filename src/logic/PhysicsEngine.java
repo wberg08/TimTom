@@ -134,6 +134,35 @@ public class PhysicsEngine {
    * @param l1 Other endpoint of line
    */
   private static boolean intersects(Circle c, Point l0, Point l1) {
+    // TODO: case by case
+    // case on orientation of the line
+    if(l0.xLoc < l1.xLoc) {
+      if(l0.yLoc < l1.yLoc) {
+        if(c.xLoc < l0.xLoc) {
+//          if(c.xLoc) {
+//            
+//          }
+        }
+      }
+      else if (l0.yLoc == l1.yLoc) {
+        
+      }
+      else {
+        //l0.yLoc > l0.yLoc
+        
+      }
+    }
+    else if (l0.yLoc == l1.yLoc) {
+      
+    }
+    else {
+      
+    }
+    
+    return intersectsInfiniteLine(c, l0, l1);
+  }
+  
+  private static boolean intersectsInfiniteLine(Circle c, Point l0, Point l1) {
     int xh = c.xLoc - l0.xLoc;
     int yh = c.yLoc - l0.yLoc;
     

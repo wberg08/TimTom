@@ -4,10 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.HashSet;
 
+import logic.GameFrame;
 import logic.entities.NonPhysicsActor;
 import logic.entities.shapedefPrimitives.Polygon;
 import logic.entities.shapedefPrimitives.Shapedef;
-import run.GameFrame;
 
 public class GroundBlock extends NonPhysicsActor {
   private int xDim, yDim;

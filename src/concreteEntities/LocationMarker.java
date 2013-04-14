@@ -3,8 +3,8 @@ package concreteEntities;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import logic.GameFrame;
 import logic.entities.NonPhysicsActor;
-import run.GameFrame;
 
 public class LocationMarker extends NonPhysicsActor {
   private static Color DEFAULT_COLOUR = Color.BLACK;

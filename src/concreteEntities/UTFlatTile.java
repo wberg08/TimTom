@@ -4,11 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.HashSet;
 
+import logic.GameFrame;
 import logic.entities.NonPhysicsActor;
 import logic.entities.shapedefPrimitives.Point;
 import logic.entities.shapedefPrimitives.Polygon;
 import logic.entities.shapedefPrimitives.Shapedef;
-import run.GameFrame;
 
 public class UTFlatTile extends NonPhysicsActor {
   private int WIDTH = 200;

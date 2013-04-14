@@ -2,7 +2,8 @@ package logic.entities;
 
 import java.awt.Graphics;
 
-import run.GameFrame;
+import logic.GameFrame;
+
 
 public abstract class BackgroundEntity {
   protected int xLoc, yLoc;
