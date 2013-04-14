@@ -13,17 +13,17 @@ import logic.entities.shapedefPrimitives.Shapedef;
 import logic.entities.shapedefPrimitives.Triangle;
 
 public class PhysicsEngine {
+
   private static final double g = 0.25; // px/frame^2
 
   /*
    * Effects one frame of physics. Note that NonPhysicsActors must be included
    * since collisions with them by PhysicsActors must be calculated.
    * 
-   * Warning: the complexity of this method is ridiculous. On an unrelated
-   * note, let's multithread it someday.
+   * Warning: the complexity of this method is ridiculous. On an unrelated note,
+   * let's multithread it someday.
    */
-  public static void step(Set<PhysicsActor> aes,
-                          Set<NonPhysicsActor> naes) {
+  public static void step(Set<PhysicsActor> aes, Set<NonPhysicsActor> naes) {
     HashSet<ActorEntity> allActors = new HashSet<ActorEntity>();
     allActors.addAll(aes);
     allActors.addAll(naes);
@@ -31,8 +31,7 @@ public class PhysicsEngine {
     /*
      * Handle all intersecting
      */
-    next: 
-    for (ActorEntity ae1 : allActors) {
+    next: for (ActorEntity ae1 : allActors) {
       ae1.didCollide = false;
       if (ae1.getHitBox() == null)
         continue;
@@ -44,15 +43,15 @@ public class PhysicsEngine {
         if (ae2.getHitBox() == null || ae1 == ae2)
           continue;
 
-
         for (Shapedef sae : ae1.getHitBox())
           for (Shapedef spotential : ae2.getHitBox())
             if (intersects(sae, spotential)) {
               applyIntersectionPhysics(ae1, ae2);
+              deintersect(ae1, ae2);
               ae1.didCollide = true;
               break next;
             }
-        
+
       }
     }
 
@@ -66,19 +65,18 @@ public class PhysicsEngine {
       locationTranslation(ae);
     }
   }
-  
+
   public static boolean intersects(Set<Shapedef> a, Set<Shapedef> b) {
-    for(Shapedef sa : a)
-      for(Shapedef sb : b)
-        if(intersects(sa, sb))
+    for (Shapedef sa : a)
+      for (Shapedef sb : b)
+        if (intersects(sa, sb))
           return true;
-    
+
     return false;
   }
 
   private static boolean intersects(Shapedef a, Shapedef b) {
-    if (a instanceof Circle)
-    {
+    if (a instanceof Circle) {
       Circle castedA = (Circle) a;
 
       if (b instanceof Circle)
@@ -87,8 +85,8 @@ public class PhysicsEngine {
         return intersects(castedA, (Triangle) b);
       else if (b instanceof Polygon)
         return intersects(castedA, (Polygon) b);
-    } else if (a instanceof Triangle)
-    {
+    }
+    else if (a instanceof Triangle) {
       Triangle castedA = (Triangle) a;
 
       if (b instanceof Circle)
@@ -97,8 +95,8 @@ public class PhysicsEngine {
         return intersects(castedA, (Triangle) b);
       else if (b instanceof Polygon)
         return intersects(castedA, (Polygon) b);
-    } else if (a instanceof Polygon)
-    {
+    }
+    else if (a instanceof Polygon) {
       Polygon castedA = (Polygon) a;
 
       if (b instanceof Circle)
@@ -121,72 +119,76 @@ public class PhysicsEngine {
   }
 
   private static boolean intersects(Circle c, Triangle t) {
-    return intersects(c, t.getFirst(), t.getSecond()) ||
-        intersects(c, t.getSecond(), t.getThird()) ||
-        intersects(c, t.getThird(), t.getFirst());
+    return intersects(c, t.getFirst(), t.getSecond())
+        || intersects(c, t.getSecond(), t.getThird())
+        || intersects(c, t.getThird(), t.getFirst());
   }
-  
+
   /**
    * Intersection between a circle and a line.
    * 
-   * @param c Circle
-   * @param l0 One endpoint of line
-   * @param l1 Other endpoint of line
+   * @param c
+   *          Circle
+   * @param l0
+   *          One endpoint of line
+   * @param l1
+   *          Other endpoint of line
    */
   private static boolean intersects(Circle c, Point l0, Point l1) {
     // TODO: case by case
     // case on orientation of the line
-    if(l0.xLoc < l1.xLoc) {
-      if(l0.yLoc < l1.yLoc) {
-        if(c.xLoc < l0.xLoc) {
-//          if(c.xLoc) {
-//            
-//          }
+    if (l0.xLoc < l1.xLoc) {
+      if (l0.yLoc < l1.yLoc) {
+        if (c.xLoc < l0.xLoc) {
+          // if(c.xLoc) {
+          //
+          // }
         }
       }
       else if (l0.yLoc == l1.yLoc) {
-        
+
       }
       else {
-        //l0.yLoc > l0.yLoc
-        
+        // l0.yLoc > l0.yLoc
+
       }
     }
     else if (l0.yLoc == l1.yLoc) {
-      
+
     }
     else {
-      
+
     }
-    
+
     return intersectsInfiniteLine(c, l0, l1);
   }
-  
+
   private static boolean intersectsInfiniteLine(Circle c, Point l0, Point l1) {
     int xh = c.xLoc - l0.xLoc;
     int yh = c.yLoc - l0.yLoc;
-    
+
     int xl = l1.xLoc - l0.xLoc;
     int yl = l1.yLoc - l0.yLoc;
-    
+
     double arcCosNum = (double) (xl * xh + yl * yh);
-    double arcCosDen = Math.sqrt(xl * xl + yl * yl) * Math.sqrt(xh * xh + yh * yh);
-    
+    double arcCosDen = Math.sqrt(xl * xl + yl * yl)
+        * Math.sqrt(xh * xh + yh * yh);
+
     double theta = Math.acos(arcCosNum / arcCosDen);
-    
+
     double h = (double) (Math.sqrt(xh * xh + yh * yh));
-    
+
     // why am I using a trig function twice? this method could be improved
     double d = h * Math.sin(theta);
-    
+
     return d < c.getRadius();
   }
 
   private static boolean intersects(Circle c, Polygon ps) {
-    for(Triangle p : ps.getTriangles())
-      if(intersects(c, p))
+    for (Triangle p : ps.getTriangles())
+      if (intersects(c, p))
         return true;
-    
+
     return false;
   }
 
@@ -196,10 +198,10 @@ public class PhysicsEngine {
   }
 
   private static boolean intersects(Triangle t, Polygon ps) {
-    for(Triangle p : ps.getTriangles())
-      if(intersects(t, p))
+    for (Triangle p : ps.getTriangles())
+      if (intersects(t, p))
         return true;
-    
+
     return false;
   }
 
@@ -227,10 +229,10 @@ public class PhysicsEngine {
      * 
      * return false;
      */
-    
-    for(Triangle a : as.getTriangles())
-      for(Triangle b : bs.getTriangles())
-        if(intersects(a, b))
+
+    for (Triangle a : as.getTriangles())
+      for (Triangle b : bs.getTriangles())
+        if (intersects(a, b))
           return true;
 
     return false;
@@ -238,17 +240,15 @@ public class PhysicsEngine {
 
   private static void applyIntersectionPhysics(ActorEntity a, ActorEntity b) {
     double globalCoeffOfElasticity = 0.8;
-    
-    if (a instanceof PhysicsActor)
-    {
+
+    if (a instanceof PhysicsActor) {
       PhysicsActor castedA = (PhysicsActor) a;
 
       castedA.setXSpd(-castedA.getXSpd() * globalCoeffOfElasticity);
       castedA.setYSpd(-castedA.getYSpd() * globalCoeffOfElasticity);
     }
 
-    if (b instanceof PhysicsActor)
-    {
+    if (b instanceof PhysicsActor) {
       PhysicsActor castedB = (PhysicsActor) b;
 
       castedB.setXSpd(-castedB.getXSpd() * globalCoeffOfElasticity);
@@ -271,8 +271,7 @@ public class PhysicsEngine {
     e.setXLoc(e.getXLoc() + xChng);
     e.setYLoc(e.getYLoc() + yChng);
 
-    for (Shapedef s : e.getHitBox())
-    {
+    for (Shapedef s : e.getHitBox()) {
       s.xLoc += xChng;
       s.yLoc += yChng;
     }
