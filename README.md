@@ -1,1 +1,1 @@
-I want to get cracking with this project - it could be a nice, very lean (the way I like it) game building framework. At least, that's what I hope.
+This project is currently stalled because I can't be bothered to multithread it. Without multithreading, the performance is unsatisfactory.
